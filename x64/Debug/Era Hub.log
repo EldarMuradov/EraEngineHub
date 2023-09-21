@@ -1,0 +1,6 @@
+﻿  EraHubWin32App.cpp
+  GUIHubRenderer.cpp
+E:\Engine\Game Engine\Era Hub\GUIHubRenderer.cpp(292,57): warning C4305: аргумент: усечение из "double" в "float"
+  Создание кода...
+LINK : warning LNK4098: библиотека по умолчанию "MSVCRT" конфликтует с использованием других библиотек; используйте /NODEFAULTLIB:library
+  Era Hub.vcxproj -> E:\Engine\Game Engine\Game Engine\x64\Debug\Era Engine Hub.exe
