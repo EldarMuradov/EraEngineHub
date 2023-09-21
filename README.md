@@ -1,2 +1,2 @@
 # EraEngineHub
- Era Engine project hub repository
+ Era Engine projects hub repository
