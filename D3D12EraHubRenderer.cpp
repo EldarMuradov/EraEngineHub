@@ -1,49 +1,82 @@
 #include "D3D12EraHubRenderer.h"
 #include <imgui.h>
+#include "SystemCalls.h"
+#include "Debug.h"
+
+bool window = true;
+bool adding = false;
+std::string tempname{ "Enter project name.." };
 
 D3D12EraHubRenderer::D3D12EraHubRenderer()
 {
+    m_CoreHub = new EraHubCore();
+    m_CoreHub->ParseProjects();
+    LOG_INFO("[Hub] Initialized successfuly");
 }
 
 D3D12EraHubRenderer::~D3D12EraHubRenderer()
 {
+    if (m_CoreHub)
+    {
+        delete m_CoreHub;
+        m_CoreHub = nullptr;
+    }
 }
 
 void D3D12EraHubRenderer::Render()
 {
-    bool show_demo_window = true;
-    bool show_another_window = false;
-
-    if (show_demo_window)
-        ImGui::ShowDemoWindow(&show_demo_window);
-
+    ImGui::BeginMainMenuBar();
     {
-        static float f = 0.0f;
-        static int counter = 0;
+        if (ImGui::BeginMenu("Help"))
+        {
+            if (ImGui::MenuItem("Github"))
+            {
+                OS::SystemCalls::OpenURL("https://github.com/EldarMuradov/EraEngine");
+            }
+            if (ImGui::MenuItem("Tutorial"))
+            {
+                OS::SystemCalls::OpenURL("https://github.com/EldarMuradov/EraEngine");
+            }
+            if (ImGui::MenuItem("Bug Report"))
+            {
+                OS::SystemCalls::OpenURL("https://github.com/EldarMuradov/EraEngine");
+            }
+            ImGui::Separator();
+            ImGui::Text("v0.0524 - <DX12>");
 
-        ImGui::Begin("Hello, world!");
+            ImGui::EndMenu();
+        }
 
-        ImGui::Text("This is some useful text.");
-        ImGui::Checkbox("Demo Window", &show_demo_window);
-        ImGui::Checkbox("Another Window", &show_another_window);
+        ImGui::EndMainMenuBar();
+    }
 
-        ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
+    ImGui::Begin("Projects", &window, ImGuiWindowFlags_NoMove);
+    ImGui::SetWindowSize(ImVec2(1280, 800));
+    ImGui::SetWindowPos(ImVec2(0, 0));
+    if (ImGui::Button("Add Project"))
+        adding = !adding;
 
-        if (ImGui::Button("Button"))
-            counter++;
+    if (adding)
+    {
+        ImGui::InputText("Project name: ", ((char*)tempname.c_str()), 255);
         ImGui::SameLine();
-        ImGui::Text("counter = %d", counter);
-
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::End();
+        if (ImGui::Button("Create Project"))
+        {
+            OS::SystemCalls::ShowInExplorer("");
+            LOG_INFO("[Hub] Project added");
+        }
     }
+    ImGui::Separator();
 
-    if (show_another_window)
+    ImGui::Text("All projects:");
+    const auto& projects = *m_CoreHub->GetProjects();
+    if (projects.size() > 0)
     {
-        ImGui::Begin("Another Window", &show_another_window);
-        ImGui::Text("Hello from another window!");
-        if (ImGui::Button("Close Me"))
-            show_another_window = false;
-        ImGui::End();
+        for (auto& proj : projects)
+        {
+            proj.second->Render();
+        }
     }
+
+    ImGui::End();
 }

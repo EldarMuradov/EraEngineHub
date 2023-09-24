@@ -3,6 +3,7 @@
 #include <imgui_impl_win32.h>
 #include "GUIHubRenderer.h"
 #include "resource.h"
+#include "Debug.h"
 
 D3D12EraHub* Hub = nullptr;
 
@@ -12,6 +13,11 @@ EraHubWin32App::EraHubWin32App()
 
 EraHubWin32App::~EraHubWin32App()
 {
+    if (m_HubRenderer)
+    {
+        delete m_HubRenderer;
+        m_HubRenderer = nullptr;
+    }
 }
 
 void EraHubWin32App::Init()
@@ -23,11 +29,17 @@ void EraHubWin32App::Init()
     ::RegisterClassExW(&wc);
     HWND hwnd = ::CreateWindowW(wc.lpszClassName, L"Era Engine Hub", WS_OVERLAPPEDWINDOW, 100, 100, 1280, 800, NULL, NULL, wc.hInstance, NULL);
 
+    LOG_INFO("[Window] Initialized Window");
+
     Hub = new D3D12EraHub();
     Hub->Init(hwnd, wc);
     GUIHubRenderer::Init(Hub);
 
-    m_HubRenderer = D3D12EraHubRenderer();
+    LOG_INFO("[GUI] Initialized GUI");
+
+    m_HubRenderer = new D3D12EraHubRenderer();
+
+    LOG_INFO("[Core] Hub started");
 
     Run(hwnd, wc);
 }
@@ -51,7 +63,7 @@ void EraHubWin32App::Run(HWND hWnd, WNDCLASSEXW wc)
 
         GUIHubRenderer::BeginFrame();
         
-        m_HubRenderer.Render();
+        m_HubRenderer->Render();
 
         GUIHubRenderer::EndFrame();
     }

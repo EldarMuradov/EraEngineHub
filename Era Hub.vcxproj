@@ -156,9 +156,13 @@
     <ClCompile Include="..\Game Engine\Extern\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="D3D12EraHub.cpp" />
     <ClCompile Include="D3D12EraHubRenderer.cpp" />
+    <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="EraHubCore.cpp" />
     <ClCompile Include="EraHubWin32App.cpp" />
     <ClCompile Include="GUIHubRenderer.cpp" />
     <ClCompile Include="Include\main.cpp" />
+    <ClCompile Include="Project.cpp" />
+    <ClCompile Include="SystemCalls.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Game Engine\Extern\imgui\imfilebrowser.h" />
@@ -166,12 +170,16 @@
     <ClInclude Include="..\Game Engine\Extern\imgui\imgui_impl_win32.h" />
     <ClInclude Include="D3D12EraHub.h" />
     <ClInclude Include="D3D12EraHubRenderer.h" />
+    <ClInclude Include="Debug.h" />
+    <ClInclude Include="EraHubCore.h" />
     <ClInclude Include="EraHubWin32App.h" />
     <ClInclude Include="GUIHubRenderer.h" />
     <ClInclude Include="Include\D3D12EraHubSampleHelper.h" />
     <ClInclude Include="Include\d3dx12.h" />
     <ClInclude Include="Include\stdafx.h" />
+    <ClInclude Include="Project.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SystemCalls.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Era Hub.rc" />

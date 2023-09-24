@@ -19,5 +19,5 @@ private:
 
 	static LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-	D3D12EraHubRenderer m_HubRenderer;
+	D3D12EraHubRenderer* m_HubRenderer = nullptr;
 };
