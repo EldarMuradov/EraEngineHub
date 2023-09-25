@@ -3,6 +3,7 @@
 #include "Project.h"
 #include <unordered_map>
 #include <string>
+#include <mutex>
 
 class EraHubCore
 {
@@ -13,8 +14,12 @@ public:
 
 	void RemoveProject(std::string name) { m_Projects.erase(name); }
 
+	void SaveChanges();
+
 	constexpr std::unordered_map<std::string, Project*>* GetProjects() noexcept { return &m_Projects; }
 
 private:
 	std::unordered_map<std::string, Project*> m_Projects;
+
+	std::mutex m_SyncMutex;
 };

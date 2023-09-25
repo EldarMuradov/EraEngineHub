@@ -48,6 +48,9 @@
     <ClCompile Include="EraHubCore.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="JsonSerializer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D3D12EraHub.h">
@@ -95,6 +98,12 @@
     <ClInclude Include="EraHubCore.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="JsonSerializer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\AsyncCore.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Era Hub.rc">
@@ -105,5 +114,8 @@
     <Image Include="..\Game Engine\Logoo.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -161,6 +161,7 @@
     <ClCompile Include="EraHubWin32App.cpp" />
     <ClCompile Include="GUIHubRenderer.cpp" />
     <ClCompile Include="Include\main.cpp" />
+    <ClCompile Include="JsonSerializer.cpp" />
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="SystemCalls.cpp" />
   </ItemGroup>
@@ -174,9 +175,11 @@
     <ClInclude Include="EraHubCore.h" />
     <ClInclude Include="EraHubWin32App.h" />
     <ClInclude Include="GUIHubRenderer.h" />
+    <ClInclude Include="Include\AsyncCore.h" />
     <ClInclude Include="Include\D3D12EraHubSampleHelper.h" />
     <ClInclude Include="Include\d3dx12.h" />
     <ClInclude Include="Include\stdafx.h" />
+    <ClInclude Include="JsonSerializer.h" />
     <ClInclude Include="Project.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SystemCalls.h" />
@@ -187,7 +190,17 @@
   <ItemGroup>
     <Image Include="..\Game Engine\Logoo.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\Game Engine\packages\nlohmann.json.3.11.2\build\native\nlohmann.json.targets" Condition="Exists('..\Game Engine\packages\nlohmann.json.3.11.2\build\native\nlohmann.json.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\Game Engine\packages\nlohmann.json.3.11.2\build\native\nlohmann.json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Game Engine\packages\nlohmann.json.3.11.2\build\native\nlohmann.json.targets'))" />
+  </Target>
 </Project>
