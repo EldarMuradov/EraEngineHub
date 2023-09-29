@@ -51,6 +51,9 @@
     <ClCompile Include="JsonSerializer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Builder.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D3D12EraHub.h">
@@ -102,6 +105,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Include\AsyncCore.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Builder.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

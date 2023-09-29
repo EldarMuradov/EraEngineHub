@@ -1,5 +1,2 @@
-﻿  JsonSerializer.cpp
-  SystemCalls.cpp
-  Создание кода...
-LINK : warning LNK4098: библиотека по умолчанию "MSVCRT" конфликтует с использованием других библиотек; используйте /NODEFAULTLIB:library
+﻿  D3D12EraHubRenderer.cpp
   Era Hub.vcxproj -> E:\Engine\Game Engine\Game Engine\x64\Debug\Era Engine Hub.exe

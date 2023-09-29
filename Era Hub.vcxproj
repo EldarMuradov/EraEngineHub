@@ -120,7 +120,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <Optimization>MaxSpeed</Optimization>
@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="..\Game Engine\Extern\imgui\imgui_impl_dx12.cpp" />
     <ClCompile Include="..\Game Engine\Extern\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Builder.cpp" />
     <ClCompile Include="D3D12EraHub.cpp" />
     <ClCompile Include="D3D12EraHubRenderer.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="..\Game Engine\Extern\imgui\imfilebrowser.h" />
     <ClInclude Include="..\Game Engine\Extern\imgui\imgui_impl_dx12.h" />
     <ClInclude Include="..\Game Engine\Extern\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="Builder.h" />
     <ClInclude Include="D3D12EraHub.h" />
     <ClInclude Include="D3D12EraHubRenderer.h" />
     <ClInclude Include="Debug.h" />

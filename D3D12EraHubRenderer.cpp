@@ -2,10 +2,12 @@
 #include <imgui.h>
 #include "SystemCalls.h"
 #include "Debug.h"
+#include "Builder.h"
 
 bool window = true;
 bool adding = false;
 std::string tempname{ "Enter project name.." };
+std::string temppath{ "Enter project path.." };
 
 D3D12EraHubRenderer::D3D12EraHubRenderer()
 {
@@ -58,11 +60,40 @@ void D3D12EraHubRenderer::Render()
 
     if (adding)
     {
+        Project* project = new Project();
         ImGui::InputText("Project name: ", ((char*)tempname.c_str()), 255);
-        ImGui::SameLine();
+
+        ImGui::NewLine();
+
+        if (ImGui::BeginMenu("Project type:"))
+        {
+            if (ImGui::MenuItem("3D Demo template"))
+            {
+                project->Type = Project::ProjectType::Type_3D_Demo;
+            }
+            if (ImGui::MenuItem("3D Empty"))
+            {
+                project->Type = Project::ProjectType::Type_3D;
+            }
+            if (ImGui::MenuItem("2D Empty"))
+            {
+                project->Type = Project::ProjectType::Type_2D;
+            }
+
+            ImGui::EndMenu();
+        }
+
+        ImGui::NewLine();
+        ImGui::NewLine();
+        ImGui::NewLine();
+
         if (ImGui::Button("Create Project"))
         {
-            OS::SystemCalls::ShowInExplorer("");
+            project->Name = tempname;
+            project->Path = temppath;
+            m_CoreHub->AddProject(project);
+            m_CoreHub->SaveChanges();
+            EraHubCore::CreateProjectInFolder(project);
             LOG_INFO("[Hub] Project added");
         }
     }

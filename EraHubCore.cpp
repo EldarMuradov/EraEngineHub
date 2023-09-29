@@ -1,6 +1,7 @@
 #include "EraHubCore.h"
 #include "JsonSerializer.h"
 #include "Include/AsyncCore.h"
+#include "Builder.h"
 
 void EraHubCore::ParseProjects()
 {
@@ -18,4 +19,13 @@ void EraHubCore::SaveChanges()
 		JSON::JsonSerializer::SerializeGlobalHubFile(m_Projects);
 		m_SyncMutex.unlock();
 	);
+}
+
+void EraHubCore::OpenProject(Project* project)
+{
+}
+
+void EraHubCore::CreateProjectInFolder(Project* project)
+{
+	OS::Builder::Build(project);
 }

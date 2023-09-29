@@ -16,7 +16,11 @@ public:
 
 	void SaveChanges();
 
+	static void OpenProject(Project* project);
+
 	constexpr std::unordered_map<std::string, Project*>* GetProjects() noexcept { return &m_Projects; }
+
+	static void CreateProjectInFolder(Project* project);
 
 private:
 	std::unordered_map<std::string, Project*> m_Projects;
