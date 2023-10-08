@@ -1,2 +1,6 @@
 ﻿  D3D12EraHubRenderer.cpp
+  EraHubCore.cpp
+  JsonSerializer.cpp
+  Project.cpp
+  Создание кода...
   Era Hub.vcxproj -> E:\Engine\Game Engine\Game Engine\x64\Debug\Era Engine Hub.exe

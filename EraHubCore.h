@@ -10,7 +10,7 @@ class EraHubCore
 public:
 	void ParseProjects();
 
-	void AddProject(Project* project) { m_Projects.emplace(std::make_pair(project->Name, project)); }
+	void AddProject(Project* project) { m_Projects.emplace(std::make_pair(std::string(project->Name), project)); }
 
 	void RemoveProject(std::string name) { m_Projects.erase(name); }
 

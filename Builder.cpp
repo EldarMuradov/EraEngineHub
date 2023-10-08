@@ -38,7 +38,7 @@ void OS::Builder::Build(Project* project, bool autoRun, bool tempFolder)
 
 	if (tempFolder)
 	{
-		destinationFolder = std::string(getenv("APPDATA")) + "\\EraHub\\Data\\ProjectTemplate\\";
+		destinationFolder = std::string(std::filesystem::current_path().string()) + "\\Data\\Temp\\ProjectTemplate\\";
 		try
 		{
 			std::filesystem::remove_all(destinationFolder);
@@ -57,6 +57,8 @@ void OS::Builder::Build(Project* project, bool autoRun, bool tempFolder)
 	std::string buildPath(destinationFolder);
 
 	bool failed = false;
+
+	project->Path = buildPath;
 
 	LOG_INFO("Preparing to build at location: \"" + buildPath + "\"");
 

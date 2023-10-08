@@ -6,8 +6,8 @@
 
 bool window = true;
 bool adding = false;
-std::string tempname{ "Enter project name.." };
-std::string temppath{ "Enter project path.." };
+std::string tempname{ "" };
+std::string temppath{ "" };
 
 D3D12EraHubRenderer::D3D12EraHubRenderer()
 {
@@ -65,22 +65,17 @@ void D3D12EraHubRenderer::Render()
 
         ImGui::NewLine();
 
-        if (ImGui::BeginMenu("Project type:"))
+        if (ImGui::Selectable("3D Demo template"))
         {
-            if (ImGui::MenuItem("3D Demo template"))
-            {
-                project->Type = Project::ProjectType::Type_3D_Demo;
-            }
-            if (ImGui::MenuItem("3D Empty"))
-            {
-                project->Type = Project::ProjectType::Type_3D;
-            }
-            if (ImGui::MenuItem("2D Empty"))
-            {
-                project->Type = Project::ProjectType::Type_2D;
-            }
-
-            ImGui::EndMenu();
+            project->Type = Project::ProjectType::Type_3D_Demo;
+        }
+        if (ImGui::Selectable("3D Empty"))
+        {
+            project->Type = Project::ProjectType::Type_3D;
+        }
+        if (ImGui::Selectable("2D Empty"))
+        {
+            project->Type = Project::ProjectType::Type_2D;
         }
 
         ImGui::NewLine();
@@ -89,11 +84,11 @@ void D3D12EraHubRenderer::Render()
 
         if (ImGui::Button("Create Project"))
         {
-            project->Name = tempname;
+            project->Name = std::string(tempname);
             project->Path = temppath;
             m_CoreHub->AddProject(project);
-            m_CoreHub->SaveChanges();
             EraHubCore::CreateProjectInFolder(project);
+            m_CoreHub->SaveChanges();
             LOG_INFO("[Hub] Project added");
         }
     }

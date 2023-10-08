@@ -5,20 +5,16 @@
 
 void EraHubCore::ParseProjects()
 {
-	_async_t(
-		m_SyncMutex.lock();
-		m_Projects = JSON::JsonSerializer::DeserializeGlobalHubFile();
-		m_SyncMutex.unlock();
-	);
+	m_SyncMutex.lock();
+	m_Projects = JSON::JsonSerializer::DeserializeGlobalHubFile();
+	m_SyncMutex.unlock();
 }
 
 void EraHubCore::SaveChanges()
 {
-	_async_t(
-		m_SyncMutex.lock();
-		JSON::JsonSerializer::SerializeGlobalHubFile(m_Projects);
-		m_SyncMutex.unlock();
-	);
+	m_SyncMutex.lock();
+	JSON::JsonSerializer::SerializeGlobalHubFile(m_Projects);
+	m_SyncMutex.unlock();
 }
 
 void EraHubCore::OpenProject(Project* project)

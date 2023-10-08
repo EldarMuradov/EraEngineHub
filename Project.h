@@ -4,7 +4,7 @@
 class Project
 {
 public:
-	enum class ProjectType : uint32_t
+	enum class ProjectType : uint8_t
 	{
 		Type_3D = 0,
 		Type_3D_Demo = 1,

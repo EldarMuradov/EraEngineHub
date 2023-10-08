@@ -16,6 +16,6 @@ namespace JSON
 		static void SerializeGlobalHubFile(std::unordered_map<std::string, Project*> projects);
 	
 	private:
-		json Merge(const json& rhs, const json& lhs);
+		static json Merge(const json& rhs, const json& lhs) noexcept;
 	};
 };
